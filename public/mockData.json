@@ -1,0 +1,120 @@
+{
+  "blocks": [
+    {
+      "hash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+      "number": 12345678,
+      "timestamp": 1623456789,
+      "miner": "0xabcdef1234567890abcdef1234567890abcdef12",
+      "transactions": 123,
+      "gasUsed": "5000000",
+      "gasLimit": "15000000"
+    },
+    {
+      "hash": "0x2345678901abcdef2345678901abcdef2345678901abcdef2345678901abcdef",
+      "number": 12345677,
+      "timestamp": 1623456679,
+      "miner": "0xbcdef1234567890abcdef1234567890abcdef123",
+      "transactions": 89,
+      "gasUsed": "4500000",
+      "gasLimit": "15000000"
+    },
+    {
+      "hash": "0x3456789012abcdef3456789012abcdef3456789012abcdef3456789012abcdef",
+      "number": 12345676,
+      "timestamp": 1623456569,
+      "miner": "0xcdef1234567890abcdef1234567890abcdef1234",
+      "transactions": 156,
+      "gasUsed": "7200000",
+      "gasLimit": "15000000"
+    }
+  ],
+  "transactions": [
+    {
+      "hash": "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+      "from": "0x1234567890abcdef1234567890abcdef12345678",
+      "to": "0x2345678901abcdef2345678901abcdef23456789",
+      "value": "1.2 ETH",
+      "gasUsed": "21000",
+      "gasPrice": "50 gwei",
+      "timestamp": 1623456789,
+      "blockNumber": 12345678
+    },
+    {
+      "hash": "0xbcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890a",
+      "from": "0x3456789012abcdef3456789012abcdef34567890",
+      "to": "0x4567890123abcdef4567890123abcdef45678901",
+      "value": "0.5 ETH",
+      "gasUsed": "45000",
+      "gasPrice": "45 gwei",
+      "timestamp": 1623456779,
+      "blockNumber": 12345678
+    },
+    {
+      "hash": "0xcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab",
+      "from": "0x5678901234abcdef5678901234abcdef56789012",
+      "to": "0x6789012345abcdef6789012345abcdef67890123",
+      "value": "0.1 ETH",
+      "gasUsed": "220000",
+      "gasPrice": "40 gwei",
+      "timestamp": 1623456769,
+      "blockNumber": 12345677
+    }
+  ],
+  "tokens": [
+    {
+      "name": "CrossFi Token",
+      "symbol": "XFI",
+      "logo": "https://example.com/logos/xfi.png",
+      "address": "0x1234567890123456789012345678901234567890",
+      "decimals": 18,
+      "price": 4.56,
+      "change24h": 5.2,
+      "marketCap": 450000000,
+      "volume24h": 24500000
+    },
+    {
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "logo": "https://example.com/logos/eth.png",
+      "address": "0x0000000000000000000000000000000000000000",
+      "decimals": 18,
+      "price": 2345.67,
+      "change24h": -2.1,
+      "marketCap": 275000000000,
+      "volume24h": 12500000000
+    },
+    {
+      "name": "USD Coin",
+      "symbol": "USDC",
+      "logo": "https://example.com/logos/usdc.png",
+      "address": "0x2345678901234567890123456789012345678901",
+      "decimals": 6,
+      "price": 1.00,
+      "change24h": 0.05,
+      "marketCap": 45000000000,
+      "volume24h": 3400000000
+    },
+    {
+      "name": "Tether",
+      "symbol": "USDT",
+      "logo": "https://example.com/logos/usdt.png",
+      "address": "0x3456789012345678901234567890123456789012",
+      "decimals": 6,
+      "price": 1.00,
+      "change24h": 0.02,
+      "marketCap": 68000000000,
+      "volume24h": 4200000000
+    },
+    {
+      "name": "Binance Coin",
+      "symbol": "BNB",
+      "logo": "https://example.com/logos/bnb.png",
+      "address": "0x4567890123456789012345678901234567890123",
+      "decimals": 18,
+      "price": 345.78,
+      "change24h": 1.8,
+      "marketCap": 56000000000,
+      "volume24h": 1800000000
+    }
+  ]
+} 
