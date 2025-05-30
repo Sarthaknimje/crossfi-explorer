@@ -1,16 +1,18 @@
-# CrossFi API Quickstart
+# CrossFi Developer & Analytics Dashboard
 
-A comprehensive blockchain explorer and DApp for CrossFi, built with Next.js, React, and the Alchemy API. This project demonstrates integration with the CrossFi blockchain and provides useful tools for developers and users.
+A comprehensive blockchain explorer and DApp for CrossFi, built with Next.js, React, and the Alchemy API. This project has evolved from a simple explorer into a full CrossFi Developer & Analytics Dashboard, providing powerful tools for developers and users.
 
 ![CrossFi API Quickstart](https://crossfi.org/img/logo-crossfi-primary.svg)
 
 ## Features
 
-- 🔍 **Blockchain Explorer:** View blocks, transactions, and addresses on the CrossFi blockchain
-- 💰 **Token Dashboard:** Explore CrossFi tokens, including XFI, MPX, and eMPX
+- 🔍 **Advanced Blockchain Explorer:** View blocks, transactions, and addresses on the CrossFi blockchain with enhanced analytics
+- 💰 **Token Analytics Dashboard:** Comprehensive metrics and usage statistics for CrossFi tokens
 - 💱 **Token Swap:** Swap tokens on the CrossFi blockchain
-- 👛 **Wallet Integration:** Connect your MetaMask or other Ethereum wallets
+- 👛 **Enhanced Wallet Support:** Advanced wallet features including balances, transactions, and token monitoring
 - 🌗 **Dark Mode Support:** Toggle between light and dark themes
+- 📊 **Real-time Analytics:** Live tracking of token and contract metrics
+- 🛠️ **Developer APIs:** Easy integration of CrossFi data into your applications
 
 ## Technologies
 
@@ -21,6 +23,7 @@ A comprehensive blockchain explorer and DApp for CrossFi, built with Next.js, Re
 - 📦 **Ethers.js:** Ethereum library for wallet integration
 - 🎨 **TailwindCSS:** For responsive and beautiful UI
 - 🔔 **React-Toastify:** For displaying notifications
+- 📈 **Analytics Tools:** For real-time data visualization and metrics
 
 ## Getting Started
 
@@ -88,19 +91,25 @@ crossfi-api-quickstart/
 - **TokenCard:** Displays information about a token
 - **Layout:** Main layout with Navbar and Footer
 - **Navbar:** Navigation bar with wallet connection
+- **AnalyticsDashboard:** Real-time metrics and statistics
+- **DeveloperAPIs:** Integration endpoints and documentation
 
 ## Custom Hooks
 
 - **useBlockchain:** Hook for interacting with the CrossFi blockchain
 - **useWallet:** Hook for wallet connection and management
+- **useAnalytics:** Hook for accessing real-time analytics data
+- **useDeveloperAPI:** Hook for integrating with CrossFi developer APIs
 
 ## Pages
 
 - **Home (`/`):** Dashboard with overview of CrossFi blockchain
 - **Explorer (`/explorer`):** Browse blocks and transactions
-- **Tokens (`/tokens`):** List and filter tokens
+- **Tokens (`/tokens`):** List and filter tokens with advanced analytics
 - **Swap (`/swap`):** Swap tokens
 - **Wallet (`/wallet`):** View wallet assets and transactions
+- **Analytics (`/analytics`):** Real-time metrics and statistics
+- **Developer (`/developer`):** API documentation and integration tools
 
 ## Contributing
 
