@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { alchemy, provider } from '@/utils/alchemy';
 import { formatEther } from 'ethers';
 import { toast } from 'react-toastify';
+import { ethers } from 'ethers';
+import { Alchemy, Network } from 'alchemy-sdk';
 
 // Define types for blockchain data
 export interface Block {
@@ -37,6 +39,13 @@ export interface Token {
   marketCap?: string;
 }
 
+interface TokenMetrics {
+  timestamp: number;
+  price: number;
+  volume: number;
+  transactions: number;
+}
+
 // Define hook interface
 interface UseBlockchainReturn {
   latestBlocks: Block[];
@@ -49,6 +58,10 @@ interface UseBlockchainReturn {
   getToken: (tokenAddress: string) => Promise<Token | null>;
   getAddressBalance: (address: string) => Promise<string>;
   getAddressTransactions: (address: string) => Promise<Transaction[]>;
+  getTokenMetrics: () => Promise<TokenMetrics[]>;
+  getApiKey: () => Promise<string>;
+  getTransactionHistory: (address: string, page?: number, limit?: number) => Promise<Transaction[]>;
+  getTokenHolders: (tokenAddress: string, minBalance?: number) => Promise<{ address: string; balance: number }[]>;
 }
 
 export const useBlockchain = (): UseBlockchainReturn => {
@@ -57,6 +70,14 @@ export const useBlockchain = (): UseBlockchainReturn => {
   const [popularTokens, setPopularTokens] = useState<Token[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const [provider] = useState(() => {
+    const alchemy = new Alchemy({
+      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
+      network: Network.ETH_MAINNET,
+    });
+    return alchemy;
+  });
 
   // Initialize with default popular tokens
   useEffect(() => {
@@ -148,7 +169,7 @@ export const useBlockchain = (): UseBlockchainReturn => {
       setIsLoading(false);
       toast.error('Error fetching blockchain data. Please try again later.');
     }
-  }, []);
+  }, [provider]);
 
   // Initialize data on component mount
   useEffect(() => {
@@ -259,6 +280,81 @@ export const useBlockchain = (): UseBlockchainReturn => {
     }
   };
 
+  const getTokenMetrics = useCallback(async (): Promise<TokenMetrics[]> => {
+    try {
+      // In a real implementation, this would fetch from your backend API
+      // For now, we'll return mock data
+      const now = Date.now();
+      const metrics: TokenMetrics[] = [];
+      
+      for (let i = 24; i >= 0; i--) {
+        metrics.push({
+          timestamp: now - i * 3600000, // Last 24 hours in hourly intervals
+          price: 100 + Math.random() * 20,
+          volume: 1000000 + Math.random() * 500000,
+          transactions: 100 + Math.floor(Math.random() * 50)
+        });
+      }
+      
+      return metrics;
+    } catch (error) {
+      console.error('Error fetching token metrics:', error);
+      throw error;
+    }
+  }, []);
+
+  const getApiKey = useCallback(async (): Promise<string> => {
+    try {
+      // In a real implementation, this would be generated or retrieved from your backend
+      // For now, we'll return a mock API key
+      return 'xfi_' + Math.random().toString(36).substring(2, 15);
+    } catch (error) {
+      console.error('Error getting API key:', error);
+      throw error;
+    }
+  }, []);
+
+  const getTransactionHistory = useCallback(async (address: string, page: number = 1, limit: number = 10) => {
+    try {
+      const response = await provider.core.getAssetTransfers({
+        fromBlock: '0x0',
+        toBlock: 'latest',
+        fromAddress: address,
+        category: ['external', 'internal', 'erc20', 'erc721', 'erc1155'],
+        withMetadata: true,
+        excludeZeroValue: true,
+        maxCount: limit,
+        pageKey: page > 1 ? (page - 1).toString() : undefined
+      });
+
+      return response.transfers;
+    } catch (error) {
+      console.error('Error fetching transaction history:', error);
+      throw error;
+    }
+  }, [provider]);
+
+  const getTokenHolders = useCallback(async (tokenAddress: string, minBalance: number = 0) => {
+    try {
+      // In a real implementation, this would fetch from your backend API
+      // For now, we'll return mock data
+      const holders = [];
+      for (let i = 0; i < 10; i++) {
+        const balance = Math.random() * 1000000;
+        if (balance >= minBalance) {
+          holders.push({
+            address: ethers.Wallet.createRandom().address,
+            balance: balance
+          });
+        }
+      }
+      return holders;
+    } catch (error) {
+      console.error('Error fetching token holders:', error);
+      throw error;
+    }
+  }, []);
+
   return {
     latestBlocks,
     latestTransactions,
@@ -270,5 +366,9 @@ export const useBlockchain = (): UseBlockchainReturn => {
     getToken,
     getAddressBalance,
     getAddressTransactions,
+    getTokenMetrics,
+    getApiKey,
+    getTransactionHistory,
+    getTokenHolders
   };
 }; 
